@@ -33,6 +33,7 @@ jobs:
           podman build ./app -t quay.io/neutron-it/rag-projet:latest --platform linux/amd64
           podman push quay.io/neutron-it/rag-projet:latest
 
+
       # Étape 4: Se connecter à OpenShift
       - name: Install OpenShift Tools
         uses: redhat-actions/openshift-tools-installer@v1
