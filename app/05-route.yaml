@@ -1,0 +1,14 @@
+# openshift/05-route.yaml
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: rag-api-route
+spec:
+  to:
+    kind: Service
+    name: rag-api-service
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
