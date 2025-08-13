@@ -36,6 +36,8 @@ jobs:
       # Étape 4: Se connecter à OpenShift
       - name: Install OpenShift Tools
         uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          oc: 'latest'
       - name: Login to OpenShift
         uses: redhat-actions/oc-login@v1
         with:
