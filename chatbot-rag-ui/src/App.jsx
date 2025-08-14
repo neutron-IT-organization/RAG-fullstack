@@ -79,7 +79,7 @@ function App() {
 
     return (
         <div className="app-container">
-            <h1>Chatbot RAG</h1>
+            <img src="/neutron_it_logo.png" alt="Neutron IT Logo" className="app-logo" />
             <ChatWindow messages={messages} isLoading={isLoading} />
             <ChatInput
                 onSendMessage={handleSendMessage}

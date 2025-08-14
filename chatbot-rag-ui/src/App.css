@@ -1,4 +1,3 @@
-/* src/App.css (Corrigé pour ordinateur) */
 
 body, html, #root {
   width: 100%;
@@ -8,15 +7,25 @@ body, html, #root {
   box-sizing: border-box;
 }
 
-/* --- Variables de couleur et style global --- */
 :root {
-  --background-color: #282c34;
-  --chat-window-bg: #20232a;
-  --user-bubble-bg: #005fff;
-  --bot-bubble-bg: #40444f;
-  --text-color: #ffffff;
-  --input-bg: #40444f;
-  --border-color: #444c56;
+  /* Couleurs de base */
+  --neutron-dark-bg: #1A1D24; /* Fond très sombre, légèrement bleu */
+  --neutron-chat-bg: #242833; /* Fond de la fenêtre de chat */
+  --neutron-text: #EAEAEA;    /* Texte principal, blanc cassé */
+  --neutron-border: #3A3F51;  /* Bordures et éléments secondaires */
+
+  /* Couleurs de la marque */
+  --neutron-blue: #3D3B8E;     /* Le bleu principal du logo */
+  --neutron-red-accent: #E94560; /* Le rouge/rose du logo pour les accents */
+  
+  /* Mapping sur les variables de l'application */
+  --background-color: var(--neutron-dark-bg);
+  --chat-window-bg: var(--neutron-chat-bg);
+  --user-bubble-bg: var(--neutron-blue);
+  --bot-bubble-bg: #3A3F51; /* Un gris neutre pour le bot */
+  --text-color: var(--neutron-text);
+  --input-bg: #3A3F51;
+  --border-color: var(--neutron-border);
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -35,22 +44,20 @@ body {
   flex-direction: column;
   height: 100vh;
   width: 100%;
-  
-  /* ▼▼ C'EST LA PARTIE QUI CENTRE LA VUE SUR ORDINATEUR ▼▼ */
-  max-width: 100%; /* Largeur maximale de la colonne */
-  margin: 0 auto;   /* Centrage horizontal */
-  
+  max-width: 100%;
+  margin: 0 auto;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  box-sizing: border-box; /* S'assure que le padding n'augmente pas la taille */
+  box-sizing: border-box;
 }
 
-h1 {
-  text-align: center;
-  color: var(--text-color);
-  margin: 20px 0;
-  font-weight: 300;
-  letter-spacing: 1px;
-  padding: 0 20px; /* Ajout d'un padding pour éviter que le texte ne touche les bords */
+/* Style pour le logo de l'entreprise (Corrigé) */
+.app-logo {
+  max-width: 350px; /* Limite la largeur maximale du logo */
+  width: 100%;      /* Permet au logo de se réduire sur les petits écrans */
+  height: auto;     /* Maintient le ratio de l'image */
+  max-height: 60px; /* Limite la hauteur maximale */
+  margin: 20px auto;/* Centre le logo horizontalement */
+  object-fit: contain;
 }
 
 /* --- Fenêtre du Chat --- */
@@ -98,7 +105,7 @@ h1 {
 }
 
 .message.error {
-    background-color: #8B0000;
+    background-color: var(--neutron-red-accent); /* Utilisation du rouge du logo pour les erreurs */
     align-self: center;
     max-width: 90%;
     text-align: center;
@@ -126,7 +133,6 @@ h1 {
   0%, 80%, 100% { transform: scale(0); }
   40% { transform: scale(1.0); }
 }
-
 
 /* --- Formulaire de saisie --- */
 .chat-input-form {
@@ -179,16 +185,17 @@ h1 {
     cursor: not-allowed;
 }
 
+/* --- Section Responsive --- */
 @media (max-width: 800px) {
-
   .app-container {
     max-width: 100%;
     box-shadow: none;
   }
   
-  h1 {
-    font-size: 1.5em;
-    margin: 15px 0;
+  .app-logo {
+    max-width: 80%; /* Utilise un pourcentage pour s'adapter aux petits écrans */
+    max-height: 40px;
+    margin: 15px auto;
   }
   
   .chat-window {

@@ -212,24 +212,24 @@ def setup_rag_pipeline():
 
 def transform_query_with_llm(question: str) -> str:
     transformation_prompt_template = """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-    Tu es un outil de reformulation de requêtes. Ton seul rôle est de réécrire la question de l'utilisateur pour la rendre optimale pour une recherche sémantique.
+    Tu es un correcteur orthographique et grammatical. Ton seul rôle est de corriger les fautes d'orthographe, de conjugaison ou de grammaire dans la question de l'utilisateur.
     Règles strictes:
     1. Ne réponds JAMAIS à la question.
-    2. Garde le sens original de la question.
-    3. Ta sortie doit être une et une seule question.
-    4. La question reformulée doit être concise.
-    
+    2. Ne change JAMAIS le sens original de la question.
+    3. Si la question est déjà correcte, renvoie-la telle quelle.
+    4. Ta sortie doit être uniquement la question corrigée.
+
     Exemple 1:
-    Utilisateur: infos sur la sécurité openshift
-    Assistant: Quelles sont les meilleures pratiques de sécurité pour un cluster OpenShift ?
-    
+    Utilisateur: c koi les avantage de openshift
+    Assistant: Quels sont les avantages d'OpenShift ?
+
     Exemple 2:
-    Utilisateur: tu peux me faire un résumé ?
-    Assistant: Quel est le résumé du document fourni ?
-    
+    Utilisateur: je veu un résumer du doc
+    Assistant: Je veux un résumé du document.
+
     Exemple 3:
-    Utilisateur: c'est quoi les grands titre dont tu peux m'aider, en se basant sur le contexte?
-    Assistant: Quels sont les thèmes principaux abordés dans le document ?<|eot_id|><|start_header_id|>user<|end_header_id|>
+    Utilisateur: Comment puis-je déployer une application ?
+    Assistant: Comment puis-je déployer une application ?<|eot_id|><|start_header_id|>user<|end_header_id|>
     {question}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
     """
     formatted_prompt = transformation_prompt_template.format(question=question)
